@@ -28,6 +28,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var router = (0, _express.Router)();
 
+router.get('/', function (req, res) {
+  res.json({
+    api: 'ANB Remittance api'
+  });
+});
+
 router.use('/auth', authValidator.validateAuth, _auth3.default);
 router.use('/customers', customerValidator.validateCustomer, _customers2.default);
 
