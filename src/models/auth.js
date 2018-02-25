@@ -1,6 +1,6 @@
 import { data } from '../constants/model';
 
-export function login(user) {
+export function login(user, res) {
   return new Promise((resolve, reject) => {
     let agent = {};
 
@@ -14,8 +14,9 @@ export function login(user) {
       }
     })
 
-    if (!Object.keys(agent).length)
-      throw new Error('Not found');
+    if (!Object.keys(agent).length){
+      return res.status(404).send({status:404, message: 'Not found'}); ;
+    }
 
     resolve(agent);
   })

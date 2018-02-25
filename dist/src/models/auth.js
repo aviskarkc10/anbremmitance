@@ -7,7 +7,7 @@ exports.login = login;
 
 var _model = require('../constants/model');
 
-function login(user) {
+function login(user, res) {
   return new Promise(function (resolve, reject) {
     var agent = {};
 
@@ -19,7 +19,9 @@ function login(user) {
       }
     });
 
-    if (!Object.keys(agent).length) throw new Error('Not found');
+    if (!Object.keys(agent).length) {
+      return res.status(404).send({ status: 404, message: 'Not found' });;
+    }
 
     resolve(agent);
   });

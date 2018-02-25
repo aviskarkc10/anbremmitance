@@ -15,12 +15,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var router = (0, _express.Router)();
 
 router.post('/agent-login', function (req, res, next) {
-  authService.login(req.body).then(function (response) {
+  authService.login(req.body, res).then(function (response) {
     res.json({
       data: response
     });
   }).catch(function (error) {
-    return res.status(404).send({ message: 'Not found.' });
+    next(error);
   });
 });
 

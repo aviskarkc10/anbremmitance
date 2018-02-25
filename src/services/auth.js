@@ -1,5 +1,5 @@
 import * as authModel from '../models/auth';
 
-export function login(agent) {
-  return authModel.login(agent);
+export function login(agent, res) {
+  return authModel.login(agent, res);
 }

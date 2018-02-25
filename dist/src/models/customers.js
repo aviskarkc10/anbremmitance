@@ -7,7 +7,7 @@ exports.getByRegistrationId = getByRegistrationId;
 
 var _model = require('../constants/model');
 
-function getByRegistrationId(user) {
+function getByRegistrationId(user, res) {
   return new Promise(function (resolve, reject) {
     var agent = {};
 
@@ -20,7 +20,7 @@ function getByRegistrationId(user) {
       }
     });
 
-    if (!Object.keys(agent).length) throw new Error('Not found.');
+    if (!Object.keys(agent).length) return res.status(404).send({ status: 404, message: 'Not found' });;
 
     resolve(agent);
   });
