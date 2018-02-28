@@ -1,21 +1,21 @@
-import { data } from '../constants/model';
+import { customers } from '../constants/model';
 
 export function getByRegistrationId(user, res) {
   return new Promise((resolve, reject) => {
-    let agent = {};
+    let singleCustomer = {};
 
-    data && data.forEach((singleAgent) => {
-      if (singleAgent.registration_id === user.id) {
-        agent = {
-          username: singleAgent.username,
-          password: singleAgent.password
+    customers && customers.forEach((customer) => {
+      if (customer.customerId === user.id) {
+        singleCustomer = {
+          username: customer.username,
+          password: customer.password
         };
       }
     })
 
-    if (!Object.keys(agent).length)
+    if (!Object.keys(singleCustomer).length)
       return res.status(404).send({ status: 404, message: 'Not found' });;
 
-    resolve(agent);
+    resolve(singleCustomer);
   })
 }

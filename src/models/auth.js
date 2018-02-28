@@ -1,20 +1,20 @@
-import { data } from '../constants/model';
+import { agent } from '../constants/model';
 
 export function login(user, res) {
   return new Promise((resolve, reject) => {
-    let agent = {};
+    let userAgent = {};
 
-    data && data.forEach((singleAgent) => {
+    agent && agent.forEach((singleAgent) => {
       if (singleAgent.username === user.username &&
         singleAgent.password === user.password &&
         singleAgent.card_no === user.card_no) {
-        agent = {
+        userAgent = {
           agent_code: singleAgent.agent_code
         };
       }
     })
 
-    if (!Object.keys(agent).length){
+    if (!Object.keys(userAgent).length){
       return res.status(404).send({status:404, message: 'Not found'}); ;
     }
 
