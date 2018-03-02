@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getByRegistrationId = getByRegistrationId;
+exports.getCIFCustomerById = getCIFCustomerById;
 
 var _customers = require('../models/customers');
 
@@ -13,4 +14,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function getByRegistrationId(id, res) {
   return customersModel.getByRegistrationId(id, res);
+}
+
+function getCIFCustomerById(user, res) {
+  return customersModel.getCIFCustomerById(user, res);
 }

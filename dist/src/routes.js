@@ -10,10 +10,6 @@ var _auth = require('./middlewares/validators/auth');
 
 var authValidator = _interopRequireWildcard(_auth);
 
-var _customer = require('./middlewares/validators/customer');
-
-var customerValidator = _interopRequireWildcard(_customer);
-
 var _auth2 = require('./controllers/auth');
 
 var _auth3 = _interopRequireDefault(_auth2);
@@ -35,6 +31,6 @@ router.get('/', function (req, res) {
 });
 
 router.use('/auth', authValidator.validateAuth, _auth3.default);
-router.use('/customers', customerValidator.validateCustomer, _customers2.default);
+router.use('/customers', _customers2.default);
 
 exports.default = router;

@@ -1,7 +1,6 @@
 import { Router } from 'express';
 
 import * as authValidator from './middlewares/validators/auth';
-import * as customerValidator from './middlewares/validators/customer';
 
 import authController from './controllers/auth';
 import customerController from './controllers/customers';
@@ -15,6 +14,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', authValidator.validateAuth, authController);
-router.use('/customers', customerValidator.validateCustomer, customerController);
+router.use('/customers', customerController);
 
 export default router;
