@@ -15,16 +15,12 @@ export function storeTransaction(transaction, res) {
 export function fetchTransaction(agent, res) {
   let agentTransaction = [];
 
-  console.log(transactions);
-  console.log(agent)
-
   return new Promise((resolve, reject) => {
     if (!agent.agentId) {
       return res.status(403).send({ status: 403, message: 'Invalid data' });      
     }
     
     transactions.length && transactions.forEach((singleTransaction) => {
-      console.log(singleTransaction.agentID)
       if(singleTransaction.agentID === agent.agentId) {
         agentTransaction.push(singleTransaction);
       }
