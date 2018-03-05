@@ -23,6 +23,6 @@ function login(user, res) {
       return res.status(404).send({ status: 404, message: 'Not found' });;
     }
 
-    resolve(userAgent);
+    return resolve(userAgent);
   });
 }

@@ -20,4 +20,12 @@ router.post('/list', (req, res, next) => {
     .catch((err) => next(err))
 });
 
+router.post('/summary', (req, res, next) => {
+  transactionService.getSummary(req.body, res)
+    .then((data) => res.json({
+      data: data
+    }))
+    .catch((err) => next(err))
+});
+
 export default router;
