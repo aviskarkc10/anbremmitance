@@ -16,7 +16,7 @@ export function getByRegistrationId(user, res) {
     if (!Object.keys(singleCustomer).length)
       return res.status(404).send({ status: 404, message: 'Not found' });;
 
-    resolve(singleCustomer);
+    return resolve(singleCustomer);
   })
 }
 
@@ -34,6 +34,6 @@ export function getCIFCustomerById(user, res) {
     if (!Object.keys(singleCustomer).length)
       return res.status(404).send({ status: 404, message: 'Not found' });;
 
-    resolve(singleCustomer);
+    return resolve(singleCustomer);
   })
 }
