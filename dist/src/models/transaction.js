@@ -68,8 +68,6 @@ function getSummary(transaction, res) {
       count: agentTransactions.length
     };
 
-    console.log(data);
-
     return resolve(data);
   });
 }
