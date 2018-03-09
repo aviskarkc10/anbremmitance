@@ -54,7 +54,7 @@ export function getSummary(transaction, res) {
       });
 
       agentTransactions && agentTransactions.length && agentTransactions.forEach((agentTransaction) => {
-        sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
+        sum = agentTransaction && agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
       });
 
       let data = {
