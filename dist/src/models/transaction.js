@@ -46,26 +46,22 @@ function getSummary(transaction, res) {
   var agentTransactions = [];
   var sum = 0;
 
-  console.log(transactions);
-
   return new Promise(function (resolve, reject) {
     try {
       if (!(transaction.agentId && transaction.date)) {
         return res.status(403).send({ status: 403, message: 'Invalid data' });
       }
 
-      agentTransactions = transactions.map(function (singleTransaction) {
+      agentTransactions = transactions.filter(function (singleTransaction) {
         var date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
 
-        console.log('here');
         if (singleTransaction.agentID === transaction.agentId && date === transaction.date) {
           return singleTransaction;
         }
       });
 
-      agentTransactions.length && agentTransactions.forEach(function (agentTransaction) {
-        console.log(agentTransaction);
-        sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
+      agentTransactions && agentTransactions.length && agentTransactions.forEach(function (agentTransaction) {
+        sum = agentTransaction && agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
       });
 
       var data = {

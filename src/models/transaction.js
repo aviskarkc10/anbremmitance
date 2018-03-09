@@ -44,7 +44,7 @@ export function getSummary(transaction, res) {
         return res.status(403).send({ status: 403, message: 'Invalid data' });
       }
 
-      agentTransactions = transactions.map((singleTransaction) => {
+      agentTransactions = transactions.filter((singleTransaction) => {
         let date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
 
         if (singleTransaction.agentID === transaction.agentId &&
