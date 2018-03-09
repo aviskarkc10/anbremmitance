@@ -39,28 +39,33 @@ export function getSummary(transaction, res) {
   let sum = 0;
 
   return new Promise((resolve, reject) => {
-    if (!(transaction.agentId && transaction.date)) {
-      return res.status(403).send({ status: 403, message: 'Invalid data' });
-    }
-
-    agentTransactions = transactions.map((singleTransaction) => {
-      let date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
-      
-      if (singleTransaction.agentID === transaction.agentId &&
-        date === transaction.date) {
-        return singleTransaction;
+    try {
+      if (!(transaction.agentId && transaction.date)) {
+        return res.status(403).send({ status: 403, message: 'Invalid data' });
       }
-    });
 
-    agentTransactions.length && agentTransactions.forEach((agentTransaction) => {
-      sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
-    });
+      agentTransactions = transactions.map((singleTransaction) => {
+        let date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
 
-    let data = {
-      totalAmount: sum,
-      count: agentTransactions.length
+        if (singleTransaction.agentID === transaction.agentId &&
+          date === transaction.date) {
+          return singleTransaction;
+        }
+      });
+
+      agentTransactions && agentTransactions.length && agentTransactions.forEach((agentTransaction) => {
+        sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
+      });
+
+      let data = {
+        totalAmount: sum,
+        count: agentTransactions.length
+      }
+
+      return resolve(data);
     }
-
-    return resolve(data)
+    catch (err) {
+      return res.status(400).send({ status: 400, message: 'Oops could not fetch summary.' });
+    }
   })
 }

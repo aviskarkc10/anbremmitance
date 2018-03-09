@@ -46,28 +46,36 @@ function getSummary(transaction, res) {
   var agentTransactions = [];
   var sum = 0;
 
+  console.log(transactions);
+
   return new Promise(function (resolve, reject) {
-    if (!(transaction.agentId && transaction.date)) {
-      return res.status(403).send({ status: 403, message: 'Invalid data' });
-    }
-
-    agentTransactions = transactions.map(function (singleTransaction) {
-      var date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
-
-      if (singleTransaction.agentID === transaction.agentId && date === transaction.date) {
-        return singleTransaction;
+    try {
+      if (!(transaction.agentId && transaction.date)) {
+        return res.status(403).send({ status: 403, message: 'Invalid data' });
       }
-    });
 
-    agentTransactions.length && agentTransactions.forEach(function (agentTransaction) {
-      sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
-    });
+      agentTransactions = transactions.map(function (singleTransaction) {
+        var date = new Date(singleTransaction.timeStamp).toISOString().split('T')[0];
 
-    var data = {
-      totalAmount: sum,
-      count: agentTransactions.length
-    };
+        console.log('here');
+        if (singleTransaction.agentID === transaction.agentId && date === transaction.date) {
+          return singleTransaction;
+        }
+      });
 
-    return resolve(data);
+      agentTransactions.length && agentTransactions.forEach(function (agentTransaction) {
+        console.log(agentTransaction);
+        sum = agentTransaction.transferAmount ? sum + agentTransaction.transferAmount : sum;
+      });
+
+      var data = {
+        totalAmount: sum,
+        count: agentTransactions.length
+      };
+
+      return resolve(data);
+    } catch (err) {
+      return res.status(400).send({ status: 400, message: 'Oops could not fetch summary.' });
+    }
   });
 }
