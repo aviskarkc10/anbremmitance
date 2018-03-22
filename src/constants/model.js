@@ -20,6 +20,21 @@ export const customers = [
     customerId: 531899,
     password: 'shrestha',
     username: 'yajanshrestha@gmail.com'
+  },
+  {
+    customerId: 531967,
+    password: 'chudal',
+    username: 'rishavchudal29@gmail.com'
+  },
+  {
+    customerId: 531968,
+    password: 'shakya',
+    username: 'uniqueshakya00700@gmail.com'
+  },
+  {
+    customerId: 531972,
+    password: 'srijana',
+    username: 'srijana@gmail.com'
   }
 ];
 
