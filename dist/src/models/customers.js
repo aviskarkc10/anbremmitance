@@ -12,7 +12,10 @@ function getByRegistrationId(user, res) {
   return new Promise(function (resolve, reject) {
     var singleCustomer = {};
 
+    console.log(_model.customers);
     _model.customers && _model.customers.forEach(function (customer) {
+      console.log(customer.id);
+      console.log(user.id);
       if (customer.customerId === user.id) {
         singleCustomer = {
           username: customer.username,
