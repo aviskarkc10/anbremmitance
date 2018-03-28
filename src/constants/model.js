@@ -35,6 +35,26 @@ export const customers = [
     customerId: 531972,
     password: 'srijana',
     username: 'srijana@gmail.com'
+  },
+  {
+    customerID: 531976,
+    username: 'dilip',
+    password: 'khadka'
+  },
+  {
+    customerID: 531973,
+    password: 'manandhar',
+    username: 'suyogya'
+  },
+  {
+    username: 'dambar',
+    password: 'nepali',
+    customerID: 531974
+  },
+  {
+    customerID: 531975,
+    username: 'ritesh',
+    password: 'maharjna'
   }
 ];
 

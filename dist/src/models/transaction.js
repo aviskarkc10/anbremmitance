@@ -35,7 +35,7 @@ function fetchTransaction(agent, res) {
     });
 
     if (agentTransaction.length) {
-      return resolve(agentTransaction);
+      return resolve(agentTransaction.reverse());
     }
 
     return res.status(404).send({ status: 404, message: 'Not found' });

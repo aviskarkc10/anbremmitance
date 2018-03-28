@@ -21,6 +21,34 @@ var customers = exports.customers = [{
   customerId: 531899,
   password: 'shrestha',
   username: 'yajanshrestha@gmail.com'
+}, {
+  customerId: 531967,
+  password: 'chudal',
+  username: 'rishavchudal29@gmail.com'
+}, {
+  customerId: 531968,
+  password: 'shakya',
+  username: 'uniqueshakya00700@gmail.com'
+}, {
+  customerId: 531972,
+  password: 'srijana',
+  username: 'srijana@gmail.com'
+}, {
+  customerID: 531976,
+  username: 'dilip',
+  password: 'khadka'
+}, {
+  customerID: 531973,
+  password: 'manandhar',
+  username: 'suyogya'
+}, {
+  username: 'dambar',
+  password: 'nepali',
+  customerID: 531974
+}, {
+  customerID: 531975,
+  username: 'ritesh',
+  password: 'maharjna'
 }];
 
 var CIF_CUSTOMER = exports.CIF_CUSTOMER = [{
